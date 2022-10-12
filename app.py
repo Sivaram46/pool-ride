@@ -1,8 +1,9 @@
-from flask import Flask, request, render_template, session
+from crypt import methods
+from flask import Flask, request, render_template, session, redirect, url_for
 from polyline import Polyline
 
-counter = 0
 app = Flask(__name__, template_folder="template")
+counter = 0
 polyline = Polyline()
 
 app.secret_key = b's/,mdnfklsadn'
@@ -21,6 +22,18 @@ def index():
         polyline.add(session['id'], source, dest)
 
     return render_template('index.html')
+
+@app.route('/pending', methods=['GET'])
+def pending():
+    res = polyline.check_status(session['id'])
+    if res == [-1, -1]:
+        return redirect(url_for('pending'))
+    
+    return redirect(url_for('success'))
+
+@app.route('/success', methods=['GET'])
+def success():
+    return render_template('success.html')
 
 
 if __name__ == '__main__':
