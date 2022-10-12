@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pool Ride</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  -->
+</head>
+
+<body>
+    <div class="formClass">
+        <form method="post">
+            <table>
+                <tbody>
+                    <tr>
+                        <h3>Source</h1>
+                    </tr>
+                    <tr>
+                        <input type="number" step="0.001" name="source-lon" id="source-lon" placeholder="Source Longitude" required>
+                        <input type="number" step="0.001" name="source-lat" id="source-lat" placeholder="Source Latitude" required>
+                    </tr>
+    
+                    <tr>
+                        <h3>Destination</h1>
+                    </tr>
+                    <tr>
+                        <input type="number" step="0.001" name="dest-lon" id="dest-lon" placeholder="Destination Longitude" required>
+                        <input type="number" step="0.001" name="dest-lat" id="dest-lat" placeholder="Destination Latitude" required>
+                    </tr>
+                </tbody>
+            </table>
+    
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+
+    <p>Source: {{ data[0] }}</p>
+    <p>Destination: {{ data[1] }}</p>
+</body>
+
+</html>
