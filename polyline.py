@@ -48,6 +48,4 @@ if __name__ == '__main__':
     polyline = Polyline()
     polyline.add(123, [52.5308,13.3847], [52.5264,13.3686])
     polyline.add(122, [52.5308,13.3847], [52.5264,13.3686])
-    # print(polyline.polylines)
-    # print(polyline.matches)
     print(polyline.check_status(122))
