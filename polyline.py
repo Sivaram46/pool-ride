@@ -8,17 +8,35 @@ class Polyline:
     def add(self, ID: int, source: list[float], destination: list[float]) -> None:
         polyline = Polyline.__get_polyline(source, destination)
         self.polylines.append([ID, polyline])
+        self.__match_polylines()
 
-    def is_matching(self, polyline1: str, polyline2: str) -> bool:
+    def check_status(self, ID) -> int:
+        try:
+            idx = next(i for i, j in enumerate(self.matches) if j[0] == ID)
+            match = self.matches[idx]
+            del self.matches[idx]
+        except:
+            match = [-1, -1]
+        return match
+
+    def remove(self, ID: int):
+        try:
+            idx = next(i for i, j in enumerate(self.polylines) if j[0] == ID)
+            del self.polylines[idx]
+        except:
+            print('No such ID')
+
+    def __is_matching(self, polyline1: str, polyline2: str) -> bool:
         return polyline1 == polyline2
 
-    def match_polylines(self):
-        for idx1, val1 in enumerate(self.polylines[:]):
-            for idx2, val2 in enumerate(self.polylines[:][idx1+1:]):
-                if self.is_matching(val1[1], val2[1]):
-                    del self.polylines[idx1]
-                    del self.polylines[idx2]
-                    self.matches.append([val1[0], val2[0]])
+    def __match_polylines(self):
+        if len(self.polylines) < 2: return
+        id1, polyline1 = self.polylines[-1]
+        for idx, (id2, polyline2) in enumerate(self.polylines[:-1]):
+            if self.__is_matching(polyline1, polyline2):
+                del self.polylines[-1]
+                del self.polylines[idx]
+                self.matches.append([id1, id2])
 
     @staticmethod
     def __get_polyline(source: list[float], destination: list[float]) -> str:
@@ -26,10 +44,10 @@ class Polyline:
         polyline = requests.get(api)
         return polyline.json()['routes'][0]['sections'][0]['polyline']
 
-if __name__ == '__main__'
+if __name__ == '__main__':
     polyline = Polyline()
     polyline.add(123, [52.5308,13.3847], [52.5264,13.3686])
     polyline.add(122, [52.5308,13.3847], [52.5264,13.3686])
-    polyline.match_polylines()
-    print(polyline.polylines)
-    print(polyline.matches)
+    # print(polyline.polylines)
+    # print(polyline.matches)
+    print(polyline.check_status(122))
