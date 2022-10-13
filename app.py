@@ -45,11 +45,11 @@ def pending():
     if res == [-1, -1]:
         return render_template('pending.html')
 
-    return redirect(url_for('success'))
+    return redirect(url_for('success', name=res[0], mob_no=res[1], share=res[2]))
 
 @app.route('/success', methods=['GET'])
 def success():
-    return render_template('success.html')
+    return render_template('success.html', name=request.args['name'], mob_no=request.args['mob_no'], share=request.args['share'])
 
 
 if __name__ == '__main__':

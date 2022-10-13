@@ -12,12 +12,12 @@ body, html, #parent {
     height: 100%;
 }
 
-#form {
+#result {
     display: flex;
     flex-direction: column;
     justify-content: end;
     gap: 14px;
-    padding-left: 30px;
+    padding-left: 47px;
     padding-right: 30px;
     padding-bottom: 50px;
     padding-top: 50px;
@@ -26,24 +26,28 @@ body, html, #parent {
     background-color: #f5f5f5;
 }
 
-button, input[type=text] {
+.label {
     font-size: 30px;
-    margin: 0;
-    border: none;
-    border-radius: 50px;
-    height: 95px;
+    font-weight: 100;
 }
 
-input[type=text] {
-    background-color: white;
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    padding-left: 40px;
-
+.value {
+    font-size: 40px;
+    font-weight: bolder;
+    padding-left: 30px;
+    margin-bottom: 25px;
 }
 
-button {
-    background-color: yellow;
-    
+.header, .footer {
+    text-align: center;
+}
+
+.header {
+    font-size: 60px;
+    padding-bottom: 50px;
+}
+
+.footer {
+    font-size: 30px;
+    padding-bottom: 30px;
 }
