@@ -10,7 +10,7 @@ class Polyline:
     def add(self, ID: int, name: str, ph_no: int, source: list, destination: list) -> None:
         polyline = Polyline.__get_polyline(source, destination)
         self.polylines.append([ID, polyline])
-        self.polylines[id] = [name, ph_no]
+        self.users[ID] = [name, ph_no]
         self.__match_polylines()
 
     def check_status(self, ID) -> int:
@@ -119,12 +119,12 @@ class Polyline:
 
     @staticmethod
     def __get_polyline(source: list, destination: list) -> str:
-        api = f'https://router.hereapi.com/v8/routes?transportMode=car&origin={source[0]},{source[0]}&destination={destination[0]},{destination[0]}&return=polyline,summary&apikey=4zrYS3HwHMWmrB6jcbGjNRltDgVws9KsQXl_BD4wHgs'
+        api = f'https://router.hereapi.com/v8/routes?transportMode=car&origin={source[0]},{source[0]}&destination={destination[0]},{destination[0]}&return=polyline,summary&apikey=DCt7LzSN9sR8IGVpnTjD3CtQWYu55oinzBdFfD9idAE'
         polyline = requests.get(api)
         return polyline.json()['routes'][0]['sections'][0]['polyline']
 
 if __name__ == '__main__':
     polyline = Polyline()
-    polyline.add(123, [52.5308,13.3847], [52.5264,13.3686])
-    polyline.add(122, [52.5308,13.3847], [52.5264,13.3686])
+    polyline.add(123, "person1", 9988776655, [52.5308,13.3847], [52.5264,13.3686])
+    polyline.add(122, "person2", 9977553311, [52.5308,13.3847], [52.5264,13.3686])
     print(polyline.check_status(122))
