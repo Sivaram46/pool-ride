@@ -28,8 +28,10 @@
             <div id="form">
                 <input type="text" name="source" id="source" placeholder="Enter Source" autocomplete="off" onkeyup="autosuggest_source(this)" autofocus required>
                 <div class="dropdown"><ul id="list_source"></ul></div> 
+                <input type="hidden" id="source_pts">
                 <input type="text" name="dest" id="dest" placeholder="Enter Destination" autocomplete="off" onkeyup="autosuggest_dest(this)" autofocus required>
                 <div class="dropdown"><ul id="list_dest"></ul></div> 
+                <input type="hidden" id="dest_pts">
                 <button type="submit">Find Pool</button>
             </div>
         </form>
