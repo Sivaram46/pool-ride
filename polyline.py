@@ -115,7 +115,7 @@ class Polyline:
         fare_share = min(1, n_line1/(n_line1+n_line2)) * 100
         if is_poly_swapped:
             fare_share = 100 - fare_share
-        return fare_share
+        return int(fare_share)
 
     @staticmethod
     def __get_polyline(source: list, destination: list) -> str:
