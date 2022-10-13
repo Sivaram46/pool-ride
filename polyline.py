@@ -1,5 +1,5 @@
 import requests
-
+from const import API_KEY
 
 class Polyline:
     def __init__(self) -> None:
@@ -96,7 +96,7 @@ class Polyline:
 
     @staticmethod
     def __get_polyline(source: list[float], destination: list[float]) -> str:
-        api = f'https://router.hereapi.com/v8/routes?transportMode=car&origin={source[0]},{source[0]}&destination={destination[0]},{destination[0]}&return=polyline,summary&apikey=4zrYS3HwHMWmrB6jcbGjNRltDgVws9KsQXl_BD4wHgs'
+        api = f'https://router.hereapi.com/v8/routes?transportMode=car&origin={source[0]},{source[0]}&destination={destination[0]},{destination[0]}&return=polyline,summary&apikey={API_KEY}'
         polyline = requests.get(api)
         return polyline.json()['routes'][0]['sections'][0]['polyline']
 
