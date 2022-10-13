@@ -4,36 +4,21 @@
 <head>
     <title>Pool Ride</title>
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/new_user.css') }}">
 </head>
 
 <body>
-    <div class="formClass">
-        <form method="post">
-            <table>
-                <tbody>
-                    <tr>
-                        <h3>Source</h1>
-                    </tr>
-                    <tr>
-                        <input type="number" step="0.001" name="source-lon" id="source-lon" placeholder="Source Longitude" value="52.530" required>
-                        <input type="number" step="0.001" name="source-lat" id="source-lat" placeholder="Source Latitude" value="13.384" required>
-                    </tr>
-    
-                    <tr>
-                        <h3>Destination</h1>
-                    </tr>
-                    <tr>
-                        <input type="number" step="0.001" name="dest-lon" id="dest-lon" placeholder="Destination Longitude" value="52.526" required>
-                        <input type="number" step="0.001" name="dest-lat" id="dest-lat" placeholder="Destination Latitude" value="13.368" required>
-                    </tr>
-                </tbody>
-            </table>
-    
-            <button type="submit">Submit</button>
-        </form>
 
-    </div>
+    <H1>Pool Ride</H1>
+
+    <form method="post">
+        <div id="container">
+            <input type="text" name="name" id="name" placeholder="Enter Name" required>
+            <input type="number" name="ph_no" id="ph_no" placeholder="Enter Mobile No" required>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
 </body>
 
 </html>
