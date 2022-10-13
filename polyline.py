@@ -95,6 +95,7 @@ class Polyline:
                 del self.polylines[-1]
                 del self.polylines[idx]
                 self.matches.append([id1, id2, share])
+                self.matches.append([id2, id1, 1-share])
 
     def _get_fare_share(self, polyline1: str, polyline2: str) -> float:
         is_poly_swapped = False
