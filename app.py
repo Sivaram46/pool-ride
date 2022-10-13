@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import Flask, request, render_template, session, redirect, url_for
 from polyline import Polyline
 
@@ -21,13 +20,14 @@ def index():
         dest = (request.form.get("dest-lon"), request.form.get("dest-lat"))
         polyline.add(session['id'], source, dest)
 
-    return render_template('index.html')
+    return redirect(url_for('pending'))
 
 @app.route('/pending', methods=['GET'])
 def pending():
     res = polyline.check_status(session['id'])
+
     if res == [-1, -1]:
-        return redirect(url_for('pending'))
+        return render_template('pending.html')
     
     return redirect(url_for('success'))
 
