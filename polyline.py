@@ -6,7 +6,7 @@ class Polyline:
         self.polylines = []
         self.matches = []
 
-    def add(self, ID: int, source: list[float], destination: list[float]) -> None:
+    def add(self, ID: int, source: list, destination: list) -> None:
         polyline = Polyline.__get_polyline(source, destination)
         self.polylines.append([ID, polyline])
         self.__match_polylines()
@@ -37,7 +37,7 @@ class Polyline:
         result = 0
         end = 0
 
-        length = [[0 for j in range(m)] for i in range(2)]
+        length = [[0 for j in range(m+1)] for i in range(2)]
 
         currRow = 0
         for i in range(0, m + 1):
@@ -61,7 +61,7 @@ class Polyline:
 
         return string1[end - result + 1: end + 1]
 
-    def __is_matching(self, polyline1: str, polyline2: str) -> bool:
+    def _is_matching(self, polyline1: str, polyline2: str) -> bool:
 
         if len(polyline1) < len(polyline2):
             polyline1, polyline2 = polyline2, polyline1
@@ -89,13 +89,32 @@ class Polyline:
             return
         id1, polyline1 = self.polylines[-1]
         for idx, (id2, polyline2) in enumerate(self.polylines[:-1]):
-            if self.__is_matching(polyline1, polyline2):
+            if self._is_matching(polyline1, polyline2):
+                # share of polyline1
+                share = self._get_fare_share(polyline1, polyline2)
                 del self.polylines[-1]
                 del self.polylines[idx]
-                self.matches.append([id1, id2])
+                self.matches.append([id1, id2, share])
+
+    def _get_fare_share(self, polyline1: str, polyline2: str) -> float:
+        is_poly_swapped = False
+        if len(polyline1) < len(polyline2):
+            is_poly_swapped = True
+            polyline1, polyline2 = polyline2, polyline1
+
+        # lcs = self.LCSubStr(polyline1, polyline2)
+        com_head_len = 2
+        # n_lcs = len(lcs) 
+        n_line1 = len(polyline1) - com_head_len
+        n_line2 = len(polyline2) - com_head_len
+
+        fare_share = min(1, n_line1/(n_line1+n_line2))
+        if is_poly_swapped:
+            fare_share = 1 - fare_share
+        return fare_share
 
     @staticmethod
-    def __get_polyline(source: list[float], destination: list[float]) -> str:
+    def __get_polyline(source: list, destination: list) -> str:
         api = f'https://router.hereapi.com/v8/routes?transportMode=car&origin={source[0]},{source[0]}&destination={destination[0]},{destination[0]}&return=polyline,summary&apikey=GpDd-xA4yTAP0JdcIoNv0_BtCj_CbzFhUI75hRNdiRk'
         polyline = requests.get(api)
         return polyline.json()['routes'][0]['sections'][0]['polyline']
