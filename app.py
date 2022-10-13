@@ -8,6 +8,22 @@ polyline = Polyline()
 app.secret_key = b's/,mdnfklsadn'
 
 @app.route('/', methods=['GET', 'POST'])
+def new_user():
+    global counter
+    if request.method == 'GET':
+        counter += 1
+        session['id'] = counter
+        return render_template('new_user.html')
+
+    if request.method == 'POST':
+        name = request.form.get("name")
+        ph_no = request.form.get("ph_no")
+        session['name'] = name
+        session['ph_no'] = ph_no
+
+    return redirect(url_for('index'))
+
+@app.route('/ride', methods=['GET', 'POST'])
 def index():
     global counter
     if request.method == 'GET':
