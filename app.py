@@ -35,13 +35,16 @@ def ride():
 
     return redirect(url_for('pending'))
 
-@app.route('/pending', methods=['GET'])
+@app.route('/pending', methods=['GET', 'POST'])
 def pending():
-    res = polyline.check_status(session['id'])
+    if request.method == 'POST':
+        polyline.remove(session['id'])
+        return redirect(url_for('ride'))    
 
+    res = polyline.check_status(session['id'])
     if res == [-1, -1]:
         return render_template('pending.html')
-    
+
     return redirect(url_for('success', name=res[0], mob_no=res[1], share=res[2]))
 
 @app.route('/success', methods=['GET'])
