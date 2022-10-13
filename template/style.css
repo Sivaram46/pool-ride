@@ -1,7 +1,49 @@
-body {
-    display: flex;
+body, html, #parent {
+    height: 100%;
 }
 
-.formClass {
-    align-self: flex-end;
+#parent {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#map {
+    background-color: rebeccapurple;
+    height: 100%;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 8px;
+    padding: 5px;
+    padding-bottom: 20px;
+    padding-top: 30px;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    background-color: aqua;
+    background-color: #f5f5f5;
+}
+
+input[type=text] {
+    background-color: white;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 40px;
+    margin: 0;
+    border: none;
+    border-radius: 10px;
+    height: 27px;
+
+}
+
+button {
+    background-color: yellow;
+    margin: 0;
+    border: none;
+    border-radius: 10px;
+    height: 27px;
 }
