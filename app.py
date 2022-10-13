@@ -1,3 +1,5 @@
+import requests
+
 from flask import Flask, request, render_template, session, redirect, url_for
 from polyline import Polyline
 
@@ -6,6 +8,7 @@ counter = 0
 polyline = Polyline()
 
 app.secret_key = b's/,mdnfklsadn'
+API_KEY = "4zrYS3HwHMWmrB6jcbGjNRltDgVws9KsQXl_BD4wHgs"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -29,9 +32,15 @@ def ride():
         return render_template('ride.html')
 
     if request.method == 'POST':
-        source = (request.form.get("source-lon"), request.form.get("source-lat"))
-        dest = (request.form.get("dest-lon"), request.form.get("dest-lat"))
-        polyline.add(session['id'], source, dest)
+        source_pts = request.form.get("source_pts")
+        dest_pts = request.form.get("dest_pts")
+
+        print(source_pts, dest_pts)
+
+        source = list(map(lambda x: float(x), source_pts.split(',')))
+        dest = list(map(lambda x: float(x), dest_pts.split(',')))
+
+        polyline.add(session['id'], session['name'], session['ph_no'], source, dest)
 
     return redirect(url_for('pending'))
 

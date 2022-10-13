@@ -49,6 +49,8 @@ const addMarkerToMapSource = (lat, lng, title) => {
   document.getElementById("source").value = title;
   document.getElementById("source_pts").value = `${lat}, ${lng}`
 
+  console.log(document.getElementById("source_pts").value);
+
   const svgMarkup = '<svg height="100" width="100" xmlns="http://www.w3.org/2000/svg">' +
   '<circle cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="red" /></svg>';
   const customIcon = new H.map.Icon(svgMarkup);
@@ -85,6 +87,8 @@ const addMarkerToMapDest = (lat, lng, title) => {
   // map.removeObjects(map.getObjects())
   document.getElementById("dest").value = title;
   document.getElementById("dest_pts").value = `${lat}, ${lng}`;
+
+  console.log(document.getElementById("dest_pts").value);
 
   const svgMarkup = '<svg height="100" width="100" xmlns="http://www.w3.org/2000/svg">' +
   '<circle cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="green" /></svg>';
