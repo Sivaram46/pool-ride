@@ -3,18 +3,21 @@ import requests
 
 class Polyline:
     def __init__(self) -> None:
+        self.users = dict()
         self.polylines = []
         self.matches = []
 
-    def add(self, ID: int, source: list, destination: list) -> None:
+    def add(self, ID: int, name: str, ph_no: int, source: list, destination: list) -> None:
         polyline = Polyline.__get_polyline(source, destination)
         self.polylines.append([ID, polyline])
+        self.polylines[id] = [name, ph_no]
         self.__match_polylines()
 
     def check_status(self, ID) -> int:
         try:
             idx = next(i for i, j in enumerate(self.matches) if j[0] == ID)
-            match = self.matches[idx]
+            match, share = self.matches[idx][1], self.matches[idx][2]
+            match = self.users[match] + [share]
             del self.matches[idx]
         except:
             match = [-1, -1]

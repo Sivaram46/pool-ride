@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pool Ride</title>
+    
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"> -->
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/template.css') }}" /> -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/success.css') }}">
+    
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+</head>
+
+<body>
+
+    <div id="parent">
+        <div id="map">
+        </div>
+        
+        <div id="result">
+            <div class="header">We got you a partner!!</div>
+            <div class="label">Name</div>
+            <div class="value">{{ name }}</div>
+
+            <div class="label">Mobile No.</div>
+            <div class="value">{{ mob_no }}</div>
+
+            <div class="label">Share</div>
+            <div class="value">{{ share }}%</div>
+            <div class="footer">Happy Journey ❤️</div>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/render_map.js') }}"></script>
+</body>
+
+</html>
