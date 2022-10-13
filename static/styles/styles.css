@@ -1,0 +1,51 @@
+body, html, #parent {
+    height: 100%;
+}
+
+#parent {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#map {
+    height: 100%;
+    /* background-color: rebeccapurple; */
+}
+
+#form {
+    flex: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 14px;
+    padding: 5px;
+    padding-bottom: 20px;
+    padding-top: 80px;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    background-color: aqua;
+    background-color: #f5f5f5;
+}
+
+button, input[type=text] {
+    font-size: 25px;
+    margin: 0;
+    border: none;
+    border-radius: 50px;
+    height: 95px;
+}
+
+input[type=text] {
+    background-color: white;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 40px;
+
+}
+
+button {
+    background-color: yellow;
+    
+}
