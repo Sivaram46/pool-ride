@@ -61,14 +61,25 @@ class Polyline:
 
         return string1[end - result + 1: end + 1]
 
-    def __is_matching(self, polyline1: str, polyline2: str) -> bool:        
-        lcs = LCSubStr(polyline1, polyline2)
+    def __is_matching(self, polyline1: str, polyline2: str) -> bool:
 
+        if len(polyline1) < len(polyline2):
+            polyline1, polyline2 = polyline2, polyline1
+
+        lcs = self.LCSubStr(polyline1, polyline2)
         com_head_len = 2
+        n_lcs = len(lcs) 
+        n_line1 = len(polyline1) - com_head_len
+        n_line2 = len(polyline2) - com_head_len
+
         # Assuming common header is 1st 2 chars
         if lcs == polyline1[:com_head_len] or lcs == "-1":
             return False
+        # Fully contained
         elif (lcs == polyline1[com_head_len: ] or lcs == polyline2[com_head_len: ]):
+            return True
+        # LCS more than 50% of both:
+        elif (n_lcs > n_line1/2 and n_lcs > n_line2/2):
             return True
         else:
             return False
