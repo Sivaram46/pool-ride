@@ -100,7 +100,7 @@ class Polyline:
                 self.matches.append([id1, id2, share])
                 self.matches.append([id2, id1, 100-share])
 
-    def _get_fare_share(self, polyline1: str, polyline2: str) -> float:
+    def _get_fare_share(self, polyline1: str, polyline2: str):
         is_poly_swapped = False
         if len(polyline1) < len(polyline2):
             is_poly_swapped = True
