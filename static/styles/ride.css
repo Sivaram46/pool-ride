@@ -1,0 +1,31 @@
+.dropdown {
+    z-index: 99999;
+    width: 100%;
+}
+
+ul{
+    list-style: none; 
+    background-color: white; 
+    padding: 0px;
+    margin-left: 29px;
+}
+
+li{
+    list-style-type: none;
+    height: 18px;
+    padding: 12px;
+    box-shadow: rgb(158, 202, 237) 0px 0px 4px;
+    border-radius: 5px;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    font-family: 'Allerta', Helvetica, Arial, sans-serif;
+    color: #495057;
+}
+
+li:hover {
+    background-color: yellowgreen;
+}
+
+#list {
+    cursor: pointer;
+}
