@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pool Ride</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/new_user.css') }}">
+</head>
+
+<body>
+
+    <H1>Pool Ride</H1>
+
+    <form method="post">
+        <div id="container">
+            <input type="text" name="name" id="name" placeholder="Enter Name" required>
+            <input type="number" name="ph_no" id="ph_no" placeholder="Enter Mobile No" required>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+</body>
+
+</html>

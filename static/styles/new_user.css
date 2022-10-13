@@ -1,22 +1,35 @@
-body, html, #parent {
+html, body {
     height: 100%;
 }
 
-#parent {
+body {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    /* justify-content: center; */
+    align-items: center;
 }
 
-#map {
-    height: 100%;
+H1 {
+    font-size: 100px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    font-weight: 900;
+}
+
+#container {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: #f5f5f5;
+
+    padding: 75px;
+    border-radius: 38px;
+
 }
 
 #form {
-    flex: 50;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
     gap: 14px;
     padding-left: 30px;
     padding-right: 30px;
@@ -28,7 +41,7 @@ body, html, #parent {
     background-color: #f5f5f5;
 }
 
-button, input[type=text] {
+button, input {
     font-size: 30px;
     margin: 0;
     border: none;
@@ -36,7 +49,7 @@ button, input[type=text] {
     height: 95px;
 }
 
-input[type=text] {
+input {
     background-color: white;
     background-position: left center;
     background-repeat: no-repeat;
@@ -47,5 +60,4 @@ input[type=text] {
 
 button {
     background-color: yellow;
-    
 }
