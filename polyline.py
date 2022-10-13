@@ -98,7 +98,7 @@ class Polyline:
                 del self.polylines[-1]
                 del self.polylines[idx]
                 self.matches.append([id1, id2, share])
-                self.matches.append([id2, id1, 1-share])
+                self.matches.append([id2, id1, 100-share])
 
     def _get_fare_share(self, polyline1: str, polyline2: str) -> float:
         is_poly_swapped = False
@@ -112,9 +112,9 @@ class Polyline:
         n_line1 = len(polyline1) - com_head_len
         n_line2 = len(polyline2) - com_head_len
 
-        fare_share = min(1, n_line1/(n_line1+n_line2))
+        fare_share = min(1, n_line1/(n_line1+n_line2)) * 100
         if is_poly_swapped:
-            fare_share = 1 - fare_share
+            fare_share = 100 - fare_share
         return fare_share
 
     @staticmethod
